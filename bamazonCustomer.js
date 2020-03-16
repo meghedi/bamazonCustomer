@@ -17,7 +17,6 @@ var connection = mysql.createConnection({
 
 connection.connect(function (err) {
     if (err) throw err;
-    // run the start function after the connection is made to prompt the user
     start();
 });
 
@@ -32,7 +31,6 @@ function start() {
         console.log(tableHtml);
         buyingOptions();
     });
-    // connection.end();
 }
 
 function buyingOptions() {
@@ -100,7 +98,6 @@ function updateDatabase(productId, quantityLeft, totalPrice) {
         function (err, results) {
             if (err) throw err;
             console.log("\n===========Order updated=============\n");
-            //start();
             console.log(`Total Price : ${totalPrice}`);
             connection.end();
         });
