@@ -21,7 +21,7 @@ connection.connect(function (err) {
 });
 
 function start() {
-    connection.query("SELECT * FROM products", function (err, results) {
+    connection.query("SELECT * FROM products INNER JOIN departments ON products.department_id=departments.department_id", function (err, results) {
         if (err) throw err;
         let tableHtml = '';
         for (var i = 0; i < results.length; i++) {
@@ -64,7 +64,7 @@ function buyingOptions() {
 }
 
 function compareQuantity(productId, units) {
-    connection.query("SELECT * FROM products", function (err, results) {
+    connection.query("SELECT * FROM products INNER JOIN departments ON products.department_id=departments.department_id", function (err, results) {
         if (err) throw err;
         for (var i = 0; i < results.length; i++) {
             if (results[i].item_id === parseInt(productId)) {
@@ -76,6 +76,7 @@ function compareQuantity(productId, units) {
                     console.log("\n==========order placed==========\n");
                     let quantityLeft = parseInt(results[i].stock_quantity - units);
                     let totalPrice = parseFloat(results[i].price * units);
+                   // let product_sales = totalPrice + 
                     updateDatabase(productId, quantityLeft, totalPrice);
                 }
             }
