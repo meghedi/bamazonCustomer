@@ -21,7 +21,7 @@ CREATE TABLE departments(
 
 INSERT INTO products(product_name, department_id, price, stock_quantity)
 VALUES ("pampers", 1 , 34.99, 10),("food storage", 2 , 8.99, 20), ("bath towel", 3 , 30, 5),
-("drinkware", 4, 5, 2 );
+("drinkware", 4, 5, 2 ), ("table set", 2, 50, 20);
 
 INSERT INTO departments(department_name, over_head_costs) 
 VALUES ("baby", 1000), ("kitchen", 2000) , ("bath", 10), ("dining", 50);
