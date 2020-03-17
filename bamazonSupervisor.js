@@ -1,5 +1,6 @@
 const mysql = require("mysql");
 const inquirer = require("inquirer");
+const cTable = require('console.table');
 
 var connection = mysql.createConnection({
     host: "localhost",
@@ -46,7 +47,13 @@ function getByDepartment() {
               FROM departments LEFT JOIN Products ON products.department_id= departments.department_id GROUP BY department_name`;
     connection.query(q, function (err, result) {
         if (err) throw err;
-        console.log(result);
+        let table = '';
+        for(let i=0 ; i < result.length; i++){
+            table = cTable.getTable(result);
+        }
+        console.log(table);
+
+        connection.end();
     });
 }
 
@@ -69,5 +76,7 @@ function addNewDepartment(){
             if (err) throw err;
             console.log(result);
         });
+
+        connection.end();
     });
 }
