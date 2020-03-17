@@ -31,15 +31,43 @@ function start() {
     ]).then(function (response) {
         console.log(response.viewingOptions);
 
-        if(response.viewingOptions === "View Product Sales by Department"){
+        if (response.viewingOptions === "View Product Sales by Department") {
             getByDepartment();
+        }else{
+            addNewDepartment();
         }
+
+        
     });
 }
 
-function getByDepartment(){
-    connection.query("SELECT * FROM departments GROUP BY department_name", function(err, result){
-        if(err) throw err;
+function getByDepartment() {
+    let q = `SELECT departments.department_id, department_name, SUM(product_sales) as product_sales, (over_head_costs - product_sales) as total_profit 
+              FROM departments LEFT JOIN Products ON products.department_id= departments.department_id GROUP BY department_name`;
+    connection.query(q, function (err, result) {
+        if (err) throw err;
         console.log(result);
+    });
+}
+
+function addNewDepartment(){
+    inquirer.prompt([{
+        type: "input",
+        name: "departmentName",
+        message: "What is department name you want to add?"
+    },
+    {
+        type: "input",
+        name: "overHeadCosts",
+        message: "whst is over head costs for this department?",
+    }]).then(function(response){
+        let q = "INSERT INTO departments SET ?";
+        connection.query(q, {
+           department_name : response.departmentName,
+           over_head_costs : response.overHeadCosts
+        }, function (err, result) {
+            if (err) throw err;
+            console.log(result);
+        });
     });
 }

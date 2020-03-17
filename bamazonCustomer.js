@@ -76,8 +76,8 @@ function compareQuantity(productId, units) {
                     console.log("\n==========order placed==========\n");
                     let quantityLeft = parseInt(results[i].stock_quantity - units);
                     let totalPrice = parseFloat(results[i].price * units);
-                   // let product_sales = totalPrice + 
-                    updateDatabase(productId, quantityLeft, totalPrice);
+                    let productSales = totalPrice + results[i].product_sales;
+                    updateDatabase(productId, quantityLeft, totalPrice, productSales);
                 }
             }
         }
@@ -86,11 +86,12 @@ function compareQuantity(productId, units) {
 }
 
 
-function updateDatabase(productId, quantityLeft, totalPrice) {
+function updateDatabase(productId, quantityLeft, totalPrice, productSales) {
     connection.query("Update products Set ? where ?",
         [
             {
-                stock_quantity: quantityLeft
+                stock_quantity: quantityLeft,
+                product_sales: productSales
             },
             {
                 item_id: productId

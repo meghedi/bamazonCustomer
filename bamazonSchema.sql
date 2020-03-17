@@ -9,6 +9,7 @@ CREATE TABLE products(
   department_id INT NOT NULL,
   price DECIMAL(10, 2) NULL,
   stock_quantity INT NULL,
+  product_sales INT NULL,
   PRIMARY KEY (item_id)
 );
 
@@ -19,9 +20,9 @@ CREATE TABLE departments(
   PRIMARY KEY (department_id)
 );
 
-INSERT INTO products(product_name, department_id, price, stock_quantity)
-VALUES ("pampers", 1 , 34.99, 10),("food storage", 2 , 8.99, 20), ("bath towel", 3 , 30, 5),
-("drinkware", 4, 5, 2 ), ("table set", 2, 50, 20);
+INSERT INTO products(product_name, department_id, price, stock_quantity, product_sales)
+VALUES ("pampers", 1 , 34.99, 10, 3000),("food storage", 2 , 8.99, 20, 2000), ("bath towel", 3 , 30, 5, 1000),
+("drinkware", 4, 5, 2, 5000 ), ("table set", 2, 50, 20, 1000);
 
 INSERT INTO departments(department_name, over_head_costs) 
 VALUES ("baby", 1000), ("kitchen", 2000) , ("bath", 10), ("dining", 50);
