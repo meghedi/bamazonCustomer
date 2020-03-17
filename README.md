@@ -1,6 +1,6 @@
 # bamazon
 ## bamazon Customer
-
+   ### bamazonCustomer.mp4
 1. Create a MySQL Database called bamazon.
 
 2. Then create a Table inside of that database called products.
@@ -28,7 +28,7 @@ This means updating the SQL database to reflect the remaining quantity.
 7. Once the update goes through, show the customer the total cost of their purchase.
 
 ## bamazon Manager
-
+ ### bamazonManager.mp4
 1. Create a new Node application called bamazonManager.js. Running this application will:
 
 2. List a set of menu options:
@@ -44,6 +44,7 @@ Add New Product
 6. If a manager selects Add New Product, it should allow the manager to add a completely new product to the store.
 
 ## bamazon Supervisor
+ ### bamazonSupervisor.mp4
 
 1. Create a new MySQL table called departments. Your table should include the following columns:
 
