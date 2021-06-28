@@ -1,0 +1,18 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "13:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: table
+    versions:
+    - 6.0.8
+    - 6.0.9
+    - 6.1.0
+    - 6.3.0
+    - 6.3.2
+    - 6.3.4
+    - 6.5.1
