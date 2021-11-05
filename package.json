@@ -21,6 +21,6 @@
     "console.table": "^0.10.0",
     "inquirer": "^8.1.4",
     "mysql": "^2.18.1",
-    "table": "^6.7.1"
+    "table": "^6.7.3"
   }
 }
